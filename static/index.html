@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Arquivo</title>
+</head>
+<body>
+    <h1>Enviar para o PC</h1>
+    <input type="file" id="fileInput" multiple>
+    <button onclick="upload()">Enviar</button>
+    <p id="status"></p>
+
+    <script>
+        async function upload() {
+            const files = document.getElementById("fileInput").files;
+            for (const file of files) {
+                const form = new FormData();
+                form.append("file", file);
+                const res = await fetch("/file/upload", { method: "POST", body: form });
+                const data = await res.json();
+                document.getElementById("status").innerText = data.status;
+            }
+        }
+    </script>
+</body>
+</html>
