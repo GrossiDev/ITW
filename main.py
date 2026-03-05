@@ -1,3 +1,11 @@
+# ITW - iPhone to Windows File Transfer
+# Copyright (C) 2026 Thiago Grossi Pacheco
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
 from fastapi import FastAPI, UploadFile
 from fastapi import HTTPException
 from fastapi.staticfiles import StaticFiles
@@ -65,3 +73,5 @@ app.mount("/", StaticFiles(directory="static", html=True), name="static") #Diret
 if __name__ == "__main__":
     generate_qrcode() #Chamada para gerar o QRCODE
     uvicorn.run(app, host="0.0.0.0", port=8000) #Configuração host e porta (0.0.0.0 todos da rede tem acesso)
+
+#🕷
